@@ -1,0 +1,14 @@
+# Ignore Python environment
+.venv/
+
+# Bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Local env file (contains secrets)
+.env
+
+# IDE/editor configs
+.vscode/
+*.swp
