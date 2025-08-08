@@ -20,7 +20,7 @@ export const ContactSection = () => {
   const formData = new FormData(e.target);
 
   try {
-    const res = await fetch("https://myportfolio-0vnd.onrender.com", {
+    const res = await fetch("https://myportfolio-0vnd.onrender.com/contact", {
       method: "POST",
       body: formData,
     });
