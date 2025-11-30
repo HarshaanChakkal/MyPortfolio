@@ -12,3 +12,8 @@ __pycache__/
 # IDE/editor configs
 .vscode/
 *.swp
+
+.DS_Store
+
+# Ignore backup folders
+My-Portfolio-backup/
