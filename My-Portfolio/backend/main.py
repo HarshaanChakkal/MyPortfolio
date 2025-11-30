@@ -11,7 +11,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://portfolio-harshaan.vercel.app"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -19,9 +19,13 @@ app.add_middleware(
 
 @app.post('/contact')
 async def contact(name: str = Form(...), email: str = Form(...), message: str = Form(...)):
+    print(f"Contact form hit! Name: {name}, Email: {email}")
     sender_email = os.getenv('SMTP_SENDER')
     sender_password = os.getenv('SMTP_PASSWORD')
     receiver_email = os.getenv('RECEIVER_EMAIL')
+    print("SENDER:", sender_email)
+    print("PASS:", sender_password)
+    print("RECEIVER:", receiver_email)
 
     subject = f'New Message from {name}'
     body = f'From: {name} <{email}>\n\n{message}'
@@ -34,4 +38,3 @@ async def contact(name: str = Form(...), email: str = Form(...), message: str = 
         return JSONResponse(content={'message': 'Email sent successfully'})
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
-    
